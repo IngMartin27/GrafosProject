@@ -1,0 +1,42 @@
+# Compiled output
+*.class
+target/
+build/
+dist/
+out/
+
+# Packaged files
+*.jar
+*.war
+*.ear
+
+# NetBeans private settings
+nbproject/private/
+nbbuild/
+nbdist/
+
+# Other IDEs
+.vscode/
+.idea/
+*.iml
+.classpath
+.project
+.settings/
+
+# Gradle
+.gradle/
+
+# Logs and temp files
+*.log
+*.tmp
+*.bak
+
+# Secrets
+.env
+*.env
+secrets.properties
+application-local.properties
+
+# OS files
+.DS_Store
+Thumbs.db
