@@ -16,6 +16,9 @@ public class Grafo {
     
     //Constructor
     public Grafo() {
+             this.nombres=new ArrayList<String>();
+this.listaAdyacencia=new ArrayList<ArrayList<Integer>>();
+
     }
     
     //Metodos
