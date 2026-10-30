@@ -16,8 +16,8 @@ public class Grafo {
     
     //Constructor
     public Grafo() {
-             this.nombres=new ArrayList<String>();
-this.listaAdyacencia=new ArrayList<ArrayList<Integer>>();
+        this.nombres=new ArrayList<String>();
+        this.listaAdyacencia=new ArrayList<ArrayList<Integer>>();
 
     }
     
@@ -51,11 +51,24 @@ this.listaAdyacencia=new ArrayList<ArrayList<Integer>>();
     //Metodo que muestra conexiones de un lugar
     public void mostrarConexiones(int ID){
         
+        //Validación si La lista de adyacencia está vacia
+        if (listaAdyacencia.isEmpty()){
+            System.out.println("No hay lugares agregados en el campus");
+            return;
+        }
+        
         ArrayList <Integer> vecinos = listaAdyacencia.get(ID);
+        
+        //Validación si el lugar tiene conexiones.
+        if(vecinos.isEmpty()){
+            System.out.println(nombres.get(ID) + " no tiene conexiones");
+            return;
+        }
 
+        System.out.println(nombres.get(ID) + " tiene las siguientes conexiones: ");
         //Por cada vecino de tipo int de la lista vecinos
         for (int vecino: vecinos) {
-            System.out.println(nombres.get(vecino));
+            System.out.println(" - " + nombres.get(vecino));
         }
         
     }
