@@ -72,4 +72,17 @@ public class Grafo {
         }
         
     }
+
+    //Getters
+    
+    //getNombres
+    public ArrayList<String> getNombres() {
+        return nombres;
+    }
+    //getListaAdyacencia
+    public ArrayList<ArrayList<Integer>> getListaAdyacencia() {
+        return listaAdyacencia;
+    }
+    
+    
 }
