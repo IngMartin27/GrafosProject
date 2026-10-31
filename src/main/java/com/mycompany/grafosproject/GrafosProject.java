@@ -3,7 +3,7 @@
  */
 
 package com.mycompany.grafosproject;
-
+import java.util.Scanner;
 /**
  *
  * @author marti
@@ -11,6 +11,7 @@ package com.mycompany.grafosproject;
 public class GrafosProject {
 
     public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
         Grafo campus = new Grafo();
         Algoritmos algoritmos = new Algoritmos ();
         //Agregar lugares
@@ -45,5 +46,9 @@ public class GrafosProject {
         algoritmos.BFS(0, campus);
         System.out.println("Metodo DFS");
         algoritmos.DFS(0, campus);
+        System.out.println("Rutas");
+        algoritmos.buscarRuta(7, 6, campus);
+        algoritmos.buscarRuta(0, 0, campus);
+        algoritmos.buscarRuta(0, 8, campus);
     }
 }

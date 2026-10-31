@@ -60,4 +60,58 @@ public class Algoritmos {
         }
 
     }
+    
+    //Metodo para encontrar la ruta más optima entre dos lugares
+    public void buscarRuta(int origen, int destino, Grafo grafo) {
+        if (origen == destino){
+            System.out.println("El origen y el destino son los mismos, la ruta es solo ese lugar");
+            return;
+        }
+        Queue<Integer> cola = new LinkedList<>();
+        boolean[] visitados = new boolean[grafo.getNombres().size()];
+        int[] predecesores = new int[grafo.getNombres().size()];
+        for (int predecesor = 0; predecesor < predecesores.length; predecesor++) {
+            predecesores[predecesor] = -1;
+        }
+        visitados[origen] = true;
+        cola.add(origen);
+        while (!cola.isEmpty()) {
+            int actual = cola.poll();
+            ArrayList<Integer> vecinos = grafo.getListaAdyacencia().get(actual);
+            for (int vecino : vecinos) {
+                if (visitados[vecino] == false) {
+                    visitados[vecino] = true;
+                    predecesores[vecino] = actual;
+                    cola.add(vecino);
+                }
+            }
+
+        }
+        
+        //Validación por si la ruta no es alcanzable
+        if(predecesores[destino] == -1){
+            System.out.println("El destino no tiene una ruta alcanzable");
+            return;
+        }
+        
+        //Ordenar el orden más corto para llegar al destino
+        int temp = destino;
+        ArrayList<Integer> ruta = new ArrayList<>();
+        while (temp != -1) {
+            ruta.add(0, temp);
+            temp = predecesores[temp];
+        }
+        
+        //Imprimir
+        System.out.println("La mejor ruta para llegar a " + grafo.getNombres().get(destino) + " es: ");
+        for (int i =0; i<ruta.size();i ++){
+            int lugar=ruta.get(i);
+            System.out.print(grafo.getNombres().get(lugar));
+            if (i < ruta.size()-1){
+                System.out.print(" -> ");
+            }
+                
+        }
+        System.out.println();
+    }
 }
