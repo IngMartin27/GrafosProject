@@ -84,5 +84,9 @@ public class Grafo {
         return listaAdyacencia;
     }
     
+    //Getter que devuelve cuantos lugares hay
+    public int getNumeroLugares(){
+        return nombres.size();
+    }
     
 }

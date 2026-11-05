@@ -38,27 +38,37 @@ public class Algoritmos {
         }
     }
     
-    //Metodo DFS
-    public void DFS (int inicio, Grafo grafo){
-        /*El metodo publico solo se limita a crear el arreglo de visitados de forma unica, para que no se reinicie
-        el arreglo cada vez que se hace el llamado recursivo. A su vez llama el metodo auxDFS.
-        */
-        boolean [] visitados = new boolean[grafo.getNombres().size()]; 
-        auxDFS(inicio, grafo, visitados);
-    }
-    
-    //Auxiliar para el metodo DFS, es private porque solo se utilizara dentro de la clase.
-    //Al usar recursividad la pila del metodo DFS la va generando java con cada llamado recursivo.
-    private void auxDFS (int vertice, Grafo grafo, boolean[] visitados){
-        visitados[vertice]=true;
-        System.out.println("ID: " + vertice + " ; "  + grafo.getNombres().get(vertice));
-        ArrayList<Integer> vecinos= grafo.getListaAdyacencia().get(vertice);
-        for (int vecino: vecinos){
-                if(visitados[vecino] == false){
-                    auxDFS(vecino, grafo, visitados);
-            }
+//    //Metodo DFS (Implementado por Jorge Bernal)
+    public static void DFS(int inicio, Grafo grafo){
+
+        //Validación: el id debe existir
+        if (inicio < 0 || inicio >= grafo.getNumeroLugares()){
+            System.out.println("El lugar con ID " + inicio + " no existe");
+            return;
         }
 
+        //Registro de visitados: todo empieza en false
+        boolean[] visitados = new boolean[grafo.getNumeroLugares()];
+
+        System.out.println("Recorrido DFS desde " + grafo.getNombres().get(inicio) + ":");
+        auxDFS(grafo, inicio, visitados);
+    }
+
+    //NUEVO: metodo privado que se llama a sí mismo (recursividad)
+    private static void auxDFS(Grafo grafo, int actual, boolean[] visitados){
+
+        //1. Marcar el lugar actual como visitado
+        visitados[actual] = true;
+
+        //2. Registrarlo (mostrarlo)
+        System.out.println("ID: " + actual + " ; "  + grafo.getNombres().get(actual));
+
+        //3. Llamarse con cada vecino que no se haya visitado
+        for (int vecino : grafo.getListaAdyacencia().get(actual)){
+            if (!visitados[vecino]){
+                auxDFS(grafo, vecino, visitados);
+            }
+        }
     }
     
     //Metodo para encontrar la ruta más optima entre dos lugares

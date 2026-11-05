@@ -47,6 +47,7 @@ public class GrafosProject {
         System.out.println("Metodo DFS");
         algoritmos.DFS(0, campus);
         System.out.println("Rutas");
+        Algoritmos.DFS(9, campus);  //Id inexistente, muestra mensaje y sigue
         algoritmos.buscarRuta(7, 6, campus);
         algoritmos.buscarRuta(0, 0, campus);
         algoritmos.buscarRuta(0, 8, campus);
