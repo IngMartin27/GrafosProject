@@ -17,8 +17,9 @@ public class Algoritmos {
     public void BFS (int inicio, Grafo grafo){
         
         //Validación
-        if(inicio<0 || inicio>grafo.getNumeroLugares()){
+        if(inicio<0 || inicio>=grafo.getNumeroLugares()){
             System.out.println("El lugar con ID: " + inicio + " no existe.");
+            return;
         }
         
         //Se crea una cola (FIFO - Firts In, First Out)
@@ -30,6 +31,7 @@ public class Algoritmos {
         boolean[]  visitados = new boolean[grafo.getNumeroLugares()];
         visitados[inicio]=true; //Punto de partida
         cola.add(inicio);
+        System.out.println("Recorrido BFS desde " + grafo.getNombres().get(inicio) + ":");
         
         while (!cola.isEmpty()){
             int actual = cola.poll(); //El elemento sale de la cola y queda guardado en actual
@@ -45,7 +47,7 @@ public class Algoritmos {
     }
     
 //    //Metodo DFS (Implementado por Jorge Bernal)
-    public static void DFS(int inicio, Grafo grafo){
+    public void DFS(int inicio, Grafo grafo){
 
         //Validación: el id debe existir
         if (inicio < 0 || inicio >= grafo.getNumeroLugares()){
@@ -60,8 +62,8 @@ public class Algoritmos {
         auxDFS(grafo, inicio, visitados);
     }
 
-    //NUEVO: metodo privado que se llama a sí mismo (recursividad)
-    private static void auxDFS(Grafo grafo, int actual, boolean[] visitados){
+    // Metodo privado que se llama a sí mismo (recursividad)
+    private  void auxDFS(Grafo grafo, int actual, boolean[] visitados){
 
         //1. Marcar el lugar actual como visitado
         visitados[actual] = true;
@@ -79,10 +81,22 @@ public class Algoritmos {
     
     //Metodo para encontrar la ruta más optima entre dos lugares
     public void buscarRuta(int origen, int destino, Grafo grafo) {
+        
+        if(origen<0 || origen >= grafo.getNumeroLugares()) {
+            System.out.println("El lugar con ID: " + origen + " no existe.");
+            return;
+        }
+        
+        if (destino<0 || destino >= grafo.getNumeroLugares()){
+            System.out.println("El lugar con ID: " + destino + " no existe.");
+            return;
+        }
+        
         if (origen == destino){
             System.out.println("El origen y el destino son los mismos, la ruta es solo ese lugar");
             return;
         }
+                
         Queue<Integer> cola = new LinkedList<>();
         boolean[] visitados = new boolean[grafo.getNumeroLugares()];
         int[] predecesores = new int[grafo.getNumeroLugares()];

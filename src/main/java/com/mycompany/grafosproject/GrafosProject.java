@@ -38,18 +38,71 @@ public class GrafosProject {
         campus.agregarConexion(4, 5);
         campus.agregarConexion(5, 6);
         
-        campus.listaLugares();
-        campus.mostrarConexiones(0);
-        campus.mostrarConexiones(8);
-        
-        System.out.println("Metodo BFS");
-        algoritmos.BFS(0, campus);
-        System.out.println("Metodo DFS");
-        algoritmos.DFS(0, campus);
-        System.out.println("Rutas");
-        Algoritmos.DFS(9, campus);  //Id inexistente, muestra mensaje y sigue
-        algoritmos.buscarRuta(7, 6, campus);
-        algoritmos.buscarRuta(0, 0, campus);
-        algoritmos.buscarRuta(0, 8, campus);
+        //Menu interactivo
+        System.out.println(" --- Bienvenido al menu para navegar en el Campus Universitario --- ");
+        int opcion=0;
+        do{
+            System.out.println("Elige una opcion entre las siguientes: ");
+            System.out.println("1 - Listar los lugares del Campus Universitario. "
+                    + "\n2 - Ver conexiones de un sitio del Campus Universitario. "
+                    + "\n3 - Hacer un recorrido BFS. "
+                    + "\n4 - Hacer un recorrido DFS. "
+                    + "\n5 - Calcular la ruta mas corta para llegar a un lugar del campus. "
+                    + "\n6 - Salir del menu.");
+            System.out.print("Elige una opcion: ");
+            opcion=input.nextInt();
+            
+            switch(opcion){
+                case 1:
+                    System.out.println("Mostrando Lugares: ");
+                    campus.listaLugares();
+                    System.out.println();
+                    break;
+                    
+                case 2:
+                    System.out.println("Mostrando conexiones: ");
+                    System.out.println("Ingresa el ID del sitio al cual deseas ver las conexiones: ");
+                    int ID = input.nextInt();
+                    campus.mostrarConexiones(ID);
+                    System.out.println();
+                    break;
+                    
+                case 3:
+                    System.out.println("Ejecutando recorrido BFS: ");
+                    System.out.println("Ingresa el ID del punto de partida con el que quieres hacer el recorrido BFS: ");
+                    int inicio = input.nextInt();
+                    algoritmos.BFS(inicio,campus);
+                    System.out.println();
+                    break;
+                    
+                case 4:
+                    System.out.println("Ejecutando recorrido DFS: ");
+                    System.out.println("Ingresa el ID del punto de partida con el que quieres hacer el recorrido DFS: ");
+                    int begin = input.nextInt();
+                    algoritmos.DFS(begin, campus);
+                    System.out.println();
+                    break;
+                
+                case 5:
+                    System.out.println("Ejecutando la ruta mas corta para llegar a un lugar: ");
+                    System.out.println("Ingesa el ID del punto de partida: ");
+                    int init = input.nextInt();
+                    System.out.println("Ingresa el ID del lugar al cual deseas llegar en el campus: ");
+                    int end = input.nextInt();
+                    algoritmos.buscarRuta(init, end, campus);
+                    System.out.println();
+                    break;
+                    
+                case 6:
+                    System.out.println("Saliendo del programa, hasta la proxima estudiante !!! :D");
+                    break;
+                
+                default:
+                    System.out.println("Opción no valida. Intenta de nuevo.");
+                    System.out.println();
+                    break;
+            }
+            
+        } while(opcion!=6);
     }
 }
