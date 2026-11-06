@@ -13,7 +13,7 @@ import java.util.Queue;
 public class Algoritmos {
     
     
-    //Metodo BFS
+    // Metodo BFS
     public void BFS (int inicio, Grafo grafo){
         
         //Validación
@@ -46,7 +46,7 @@ public class Algoritmos {
         }
     }
     
-//    //Metodo DFS (Implementado por Jorge Bernal)
+   // Metodo DFS (Implementado por Jorge Bernal)
     public void DFS(int inicio, Grafo grafo){
 
         //Validación: el id debe existir

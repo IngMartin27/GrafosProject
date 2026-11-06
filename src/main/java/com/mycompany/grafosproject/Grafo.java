@@ -68,7 +68,7 @@ public class Grafo {
         System.out.println(nombres.get(ID) + " tiene las siguientes conexiones: ");
         //Por cada vecino de tipo int de la lista vecinos
         for (int vecino: vecinos) {
-            System.out.println(" - " + nombres.get(vecino));
+            System.out.println(" - " + "ID: " + vecino + " ; "+nombres.get(vecino));
         }
         
     }
