@@ -15,13 +15,19 @@ public class Algoritmos {
     
     //Metodo BFS
     public void BFS (int inicio, Grafo grafo){
+        
+        //Validación
+        if(inicio<0 || inicio>grafo.getNumeroLugares()){
+            System.out.println("El lugar con ID: " + inicio + " no existe.");
+        }
+        
         //Se crea una cola (FIFO - Firts In, First Out)
         Queue <Integer> cola = new LinkedList<>();
         /*
         Se realiza un arreglo de booleanos que nos indica verdadero o falso para cada lugar del campus. Se le asigna el tamaño de la lista de nombres,
         y al crearlo de este modo todas sus casillas empiezan con automaticamente el valor de false
         */
-        boolean[]  visitados = new boolean[grafo.getNombres().size()];
+        boolean[]  visitados = new boolean[grafo.getNumeroLugares()];
         visitados[inicio]=true; //Punto de partida
         cola.add(inicio);
         
@@ -78,8 +84,8 @@ public class Algoritmos {
             return;
         }
         Queue<Integer> cola = new LinkedList<>();
-        boolean[] visitados = new boolean[grafo.getNombres().size()];
-        int[] predecesores = new int[grafo.getNombres().size()];
+        boolean[] visitados = new boolean[grafo.getNumeroLugares()];
+        int[] predecesores = new int[grafo.getNumeroLugares()];
         for (int predecesor = 0; predecesor < predecesores.length; predecesor++) {
             predecesores[predecesor] = -1;
         }
