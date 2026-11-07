@@ -50,7 +50,11 @@ public class GrafosProject {
                     + "\n5 - Calcular la ruta mas corta para llegar a un lugar del campus. "
                     + "\n6 - Salir del menu.");
             System.out.print("Elige una opcion: ");
-            opcion=input.nextInt();
+            try{
+                opcion = Integer.parseInt(input.nextLine());
+            } catch (NumberFormatException e) {
+                opcion=-1; //Fuerza a entrar al default del switch            
+        }
             
             switch(opcion){
                 case 1:
@@ -62,34 +66,50 @@ public class GrafosProject {
                 case 2:
                     System.out.println("Mostrando conexiones: ");
                     System.out.println("Ingresa el ID del sitio al cual deseas ver las conexiones: ");
-                    int ID = input.nextInt();
-                    campus.mostrarConexiones(ID);
+                    try{
+                        int ID = Integer.parseInt(input.nextLine());
+                        campus.mostrarConexiones(ID);
+                    }catch(NumberFormatException e){
+                        System.out.println("El ID debe ser un numero entero.");
+                    }
                     System.out.println();
                     break;
                     
                 case 3:
                     System.out.println("Ejecutando recorrido BFS: ");
                     System.out.println("Ingresa el ID del punto de partida con el que quieres hacer el recorrido BFS: ");
-                    int inicio = input.nextInt();
-                    algoritmos.BFS(inicio,campus);
+                    try{
+                        int inicio = Integer.parseInt(input.nextLine());
+                        algoritmos.BFS(inicio,campus);
+                    }catch(NumberFormatException e){
+                        System.out.println("El ID debe ser un numero entero.");
+                    }
                     System.out.println();
                     break;
                     
                 case 4:
                     System.out.println("Ejecutando recorrido DFS: ");
                     System.out.println("Ingresa el ID del punto de partida con el que quieres hacer el recorrido DFS: ");
-                    int begin = input.nextInt();
-                    algoritmos.DFS(begin, campus);
+                    try{
+                        int begin = Integer.parseInt(input.nextLine());
+                        algoritmos.DFS(begin, campus);
+                    }catch(NumberFormatException e){
+                        System.out.println("El ID debe ser un numero entero.");
+                    }
                     System.out.println();
                     break;
                 
                 case 5:
                     System.out.println("Ejecutando la ruta mas corta para llegar a un lugar: ");
                     System.out.println("Ingesa el ID del punto de partida: ");
-                    int init = input.nextInt();
-                    System.out.println("Ingresa el ID del lugar al cual deseas llegar en el campus: ");
-                    int end = input.nextInt();
-                    algoritmos.buscarRuta(init, end, campus);
+                    try{
+                        int init = Integer.parseInt(input.nextLine());
+                        System.out.println("Ingresa el ID del lugar al cual deseas llegar en el campus: ");
+                        int end = Integer.parseInt(input.nextLine());
+                        algoritmos.buscarRuta(init, end, campus);
+                    }catch(NumberFormatException e){
+                        System.out.println("El ID debe ser un numero entero.");
+                    }
                     System.out.println();
                     break;
                     
@@ -98,7 +118,7 @@ public class GrafosProject {
                     break;
                 
                 default:
-                    System.out.println("Opción no valida. Intenta de nuevo.");
+                    System.out.println("Opcion no valida. Intenta de nuevo.");
                     System.out.println();
                     break;
             }

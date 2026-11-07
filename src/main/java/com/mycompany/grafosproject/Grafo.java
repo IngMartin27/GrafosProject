@@ -50,7 +50,11 @@ public class Grafo {
     
     //Metodo que muestra conexiones de un lugar
     public void mostrarConexiones(int ID){
-        
+        //Validación que confirme que el usuario asigno un valor ID valido
+        if(ID<0 || ID >= getNumeroLugares()){
+            System.out.println("El lugar con ID " + ID + " no existe");
+            return;
+        }
         //Validación si La lista de adyacencia está vacia
         if (listaAdyacencia.isEmpty()){
             System.out.println("No hay lugares agregados en el campus");
