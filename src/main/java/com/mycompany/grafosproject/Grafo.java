@@ -34,6 +34,12 @@ public class Grafo {
     //Metodo agregarConexion
     
     public void agregarConexion(int origen, int destino){
+        //Validación que asegure un ID existente
+        if (origen < 0 || origen >= getNumeroLugares() 
+                || destino < 0 || destino >= getNumeroLugares()){
+            System.out.println("No se pudo crear la conexion: ID inexistente. ");
+            return;
+        }
         //La lista de adyacencia ya tiene el espacio creado cuando se añade el nombre
         listaAdyacencia.get(origen).add(destino);
         listaAdyacencia.get(destino).add(origen);

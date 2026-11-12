@@ -22,7 +22,7 @@ public class Algoritmos {
             return;
         }
         
-        //Se crea una cola (FIFO - Firts In, First Out)
+        //Se crea una cola (FIFO - First In, First Out)
         Queue <Integer> cola = new LinkedList<>();
         /*
         Se realiza un arreglo de booleanos que nos indica verdadero o falso para cada lugar del campus. Se le asigna el tamaño de la lista de nombres,
@@ -93,7 +93,7 @@ public class Algoritmos {
         }
         
         if (origen == destino){
-            System.out.println("El origen y el destino son los mismos, la ruta es solo ese lugar");
+            System.out.println("La ruta es: " + grafo.getNombres().get(origen));
             return;
         }
                 

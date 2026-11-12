@@ -101,7 +101,7 @@ public class GrafosProject {
                 
                 case 5:
                     System.out.println("Ejecutando la ruta mas corta para llegar a un lugar: ");
-                    System.out.println("Ingesa el ID del punto de partida: ");
+                    System.out.println("Ingresa el ID del punto de partida: ");
                     try{
                         int init = Integer.parseInt(input.nextLine());
                         System.out.println("Ingresa el ID del lugar al cual deseas llegar en el campus: ");
@@ -114,7 +114,7 @@ public class GrafosProject {
                     break;
                     
                 case 6:
-                    System.out.println("Saliendo del programa, hasta la proxima estudiante !!! :D");
+                    System.out.println("Saliendo del programa, hasta la proxima !!! :D");
                     break;
                 
                 default:
